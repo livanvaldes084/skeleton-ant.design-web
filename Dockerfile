@@ -18,4 +18,4 @@ USER node
 EXPOSE 3000
 
 # Start the application
-CMD /wait && npm run start
+CMD /wait && npm install && npm run start
