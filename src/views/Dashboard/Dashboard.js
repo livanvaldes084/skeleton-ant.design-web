@@ -46,7 +46,7 @@ const Dashboard = () => {
           rowHeight={30}
           width={1200}
         >
-          <div key="a" rowHeight="300">
+          <div key="a">
             {" "}
             <Budget />
           </div>
