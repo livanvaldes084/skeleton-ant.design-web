@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/styles";
 import { Divider, Drawer } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-
+import EventNoteIcon from "@material-ui/icons/EventNote";
 import { Profile, SidebarNav } from "./components";
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +40,11 @@ const Sidebar = props => {
       title: "Dashboard",
       href: "/dashboard",
       icon: <DashboardIcon />
+    },
+    {
+      title: "Events",
+      href: "/events",
+      icon: <EventNoteIcon />
     }
   ];
 

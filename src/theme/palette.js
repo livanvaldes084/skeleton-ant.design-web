@@ -1,7 +1,7 @@
-import { colors } from '@material-ui/core';
+import { colors } from "@material-ui/core";
 
-const white = '#FFFFFF';
-const black = '#000000';
+const white = "#FFFFFF";
+const black = "#000000";
 
 export default {
   black,
@@ -9,14 +9,14 @@ export default {
   primary: {
     contrastText: white,
     dark: colors.indigo[900],
-    main: colors.indigo[500],
-    light: colors.indigo[100]
+    main: colors.indigo[900],
+    light: colors.indigo[0]
   },
   secondary: {
     contrastText: white,
     dark: colors.blue[900],
-    main: colors.blue['A400'],
-    light: colors.blue['A400']
+    main: colors.blue["A400"],
+    light: colors.blue["A400"]
   },
   success: {
     contrastText: white,
@@ -48,7 +48,7 @@ export default {
     link: colors.blue[600]
   },
   background: {
-    default: '#F4F6F8',
+    default: "#F4F6F8",
     paper: white
   },
   icon: colors.blueGrey[600],

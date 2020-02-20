@@ -5,6 +5,7 @@ import { RouteWithLayout } from "./components";
 import { Main as MainLayout } from "./layouts";
 
 import { Dashboard as DashboardView } from "./views";
+import { Events as EventsView } from "./views";
 
 const Routes = () => {
   return (
@@ -15,6 +16,12 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/dashboard"
+      />
+      <RouteWithLayout
+        component={EventsView}
+        exact
+        layout={MainLayout}
+        path="/events"
       />
       <Redirect to="/not-found" />
     </Switch>
