@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
 import GridLayout from "react-grid-layout";
+import { Modal } from "antd";
 
 import {
   Budget,
@@ -10,6 +11,7 @@ import {
   TotalProfit,
   LatestSales
 } from "./components";
+import { FloatButton } from "components";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = () => {
   const classes = useStyles();
+  const [visible, setVisible] = useState(false);
   // layout is an array of objects, see the demo for more complete usage
   const layout = [
     { i: "a", x: 0, y: 0, w: 2, h: 4, static: true },
@@ -33,8 +36,28 @@ const Dashboard = () => {
     { i: "d", x: 7, y: 0, w: 2.5, h: 4 },
     { i: "e", x: 0, y: 1, w: 4, h: 13.5 }
   ];
+  //Function when the user click in float button
+  const handleClickFloatButton = e => {
+    setVisible(true);
+  };
+  const handleOk = e => {
+    setVisible(false);
+  };
+  const handleCancel = e => {
+    setVisible(false);
+  };
   return (
     <div className={classes.root}>
+      <Modal
+        title="Basic Modal"
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
       <Grid container spacing={4}>
         <GridLayout
           className="layout"
@@ -65,6 +88,7 @@ const Dashboard = () => {
           </div>
         </GridLayout>
       </Grid>
+      <FloatButton handleClickFloatButton={handleClickFloatButton} />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 @import "../node_modules/react-big-calendar/lib/css/react-big-calendar.css";
 @import "../node_modules/react-big-calendar/lib/addons/dragAndDrop/styles.css";
+@import "../node_modules/antd/dist/antd.css";
 body {
   background: white;
   padding: 20px;
