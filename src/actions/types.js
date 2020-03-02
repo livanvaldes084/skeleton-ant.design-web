@@ -1,1 +1,1 @@
-export const SELECT_WIDGET = "SELECT_WIDGET";
+export const ADD_WIDGET = "ADD_WIDGET";

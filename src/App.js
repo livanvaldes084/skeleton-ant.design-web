@@ -6,15 +6,9 @@ import { ThemeProvider } from "@material-ui/styles";
 import Routes from "./Routes";
 import theme from "./theme";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import promise from "redux-promise";
-import createLogger from "redux-logger";
-import allReducers from "./reducers";
+import store from "./store";
 
 const browserHistory = createBrowserHistory();
-const logger = createLogger();
-const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
 
 function App() {
   return (

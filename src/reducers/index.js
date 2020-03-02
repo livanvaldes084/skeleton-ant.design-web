@@ -6,7 +6,7 @@ import WidgetReducer from "./widgetReducer";
  * */
 
 const allReducers = combineReducers({
-  selectWidget: WidgetReducer
+  widgets: WidgetReducer
 });
 
 export default allReducers;

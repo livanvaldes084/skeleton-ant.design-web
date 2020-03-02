@@ -1,12 +1,11 @@
 import React from "react";
 import { Card, Avatar } from "antd";
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { selectWidget } from "actions/widgetActions";
+import { addWidget } from "actions/widgetActions";
 const Widget = props => {
   const handleClick = e => {
-    selectWidget(props);
+    props.addWidget(props);
   };
   return (
     <Card title={props.name} style={{ width: 160 }} onClick={handleClick}>
@@ -18,7 +17,7 @@ Widget.propTypes = {
   name: PropTypes.string.isRequired,
   imageUrl: PropTypes.string
 };
-const matchDispatchToProps = dispatch => {
-  return bindActionCreators({ selectWidget: selectWidget }, dispatch);
+const mapDispatchToProps = {
+  addWidget
 };
-export default connect("", matchDispatchToProps)(Widget);
+export default connect("", mapDispatchToProps)(Widget);

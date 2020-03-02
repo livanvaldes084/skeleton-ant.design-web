@@ -1,8 +1,7 @@
-import { SELECT_WIDGET } from "./types";
-export const selectWidget = widget => {
-  console.log(1);
+import { ADD_WIDGET } from "./types";
+export const addWidget = widget => {
   return {
-    type: SELECT_WIDGET,
+    type: ADD_WIDGET,
     payload: widget
   };
 };

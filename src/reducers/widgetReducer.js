@@ -1,4 +1,5 @@
-import { SELECT_WIDGET } from "actions/types";
+import { ADD_WIDGET } from "actions/types";
+import { dataWidget } from "./dataWidget";
 
 /*
  * All reducers get two parameters passed in, state and action that occurred
@@ -6,11 +7,16 @@ import { SELECT_WIDGET } from "actions/types";
  * */
 
 // "state = null" is set so that we don't throw an error when app first boots up
-export default function(state = null, action) {
+
+const initialState = {
+  dataWidget: dataWidget
+};
+export default function(state = initialState.dataWidget, action) {
   switch (action.type) {
-    case SELECT_WIDGET:
-      return action.payload;
-      break;
+    case ADD_WIDGET:
+      return [...state, action.payload];
+
+    default:
+      return state;
   }
-  return state;
 }
