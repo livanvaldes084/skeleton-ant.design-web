@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
 import GridLayout from "react-grid-layout";
-import { Modal } from "antd";
 
 import {
   Budget,
   TotalUsers,
   TasksProgress,
   TotalProfit,
-  LatestSales
+  LatestSales,
+  Widget
 } from "./components";
 import { FloatButton } from "components";
+import { GenericModal } from "components";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,18 +49,9 @@ const Dashboard = () => {
   };
   return (
     <div className={classes.root}>
-      <Modal
-        title="Basic Modal"
-        visible={visible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
+      <GenericModal title="Select widget" visible={visible} handleOk={handleOk} handleCancel={handleCancel} width={800} body = {<Widget/>}/>
       <Grid container spacing={4}>
-        <GridLayout
+      <GridLayout
           className="layout"
           layout={layout}
           cols={12}
