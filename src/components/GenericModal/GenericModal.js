@@ -14,6 +14,7 @@ const GenericModal = props => {
           onOk={props.handleOk}
           onCancel={props.handleCancel}
           width={props.width}
+          footer={props.footer}
         >
           {props.body}
         </Modal>

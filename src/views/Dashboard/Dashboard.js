@@ -12,6 +12,8 @@ import { GenericModal } from "components";
 import { CloseOutlined } from "@ant-design/icons";
 import ModalContext from "context/ModalContext";
 import { deleteWidget } from "actions/widgetActions";
+import { Button } from "antd";
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4)
@@ -22,14 +24,18 @@ const Dashboard = props => {
   const classes = useStyles();
   const { showLoading, hideLoading } = useContext(ModalContext);
 
-  //Function when the user click in float button
+  /**
+   * Function when the user click in float button
+   * @param {*} e
+   */
   const handleClickFloatButton = e => {
-    //setVisible(true);
     showLoading();
   };
-  const handleOk = e => {
-    hideLoading();
-  };
+
+  /**
+   *Handle Cancel
+   * @param {*} e
+   */
   const handleCancel = e => {
     hideLoading();
   };
@@ -79,10 +85,13 @@ const Dashboard = props => {
     <div className={classes.root}>
       <GenericModal
         title="Select widget"
-        handleOk={handleOk}
-        handleCancel={handleCancel}
         width={800}
         body={<ListWidget />}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Cancel
+          </Button>
+        ]}
       />
       <Grid container spacing={4}>
         <GridLayout className="layout" cols={12} rowHeight={30} width={1200}>
