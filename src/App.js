@@ -7,16 +7,18 @@ import Routes from "./Routes";
 import theme from "./theme";
 import { Provider } from "react-redux";
 import store from "./store";
-
+import { ModalProvider } from "components";
 const browserHistory = createBrowserHistory();
 
 function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Router history={browserHistory}>
-          <Routes />
-        </Router>
+        <ModalProvider>
+          <Router history={browserHistory}>
+            <Routes />
+          </Router>
+        </ModalProvider>
       </ThemeProvider>
     </Provider>
   );

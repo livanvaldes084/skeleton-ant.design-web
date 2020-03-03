@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
 import GridLayout from "react-grid-layout";
@@ -10,7 +10,8 @@ import * as components from "./components";
 import { FloatButton } from "components";
 import { GenericModal } from "components";
 import { CloseOutlined } from "@ant-design/icons";
-
+import ModalContext from "context/ModalContext";
+import { deleteWidget } from "actions/widgetActions";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4)
@@ -19,20 +20,26 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = props => {
   const classes = useStyles();
-  const [visible, setVisible] = useState(false);
+  const { showLoading, hideLoading } = useContext(ModalContext);
 
   //Function when the user click in float button
   const handleClickFloatButton = e => {
-    setVisible(true);
+    //setVisible(true);
+    showLoading();
   };
   const handleOk = e => {
-    setVisible(false);
+    hideLoading();
   };
   const handleCancel = e => {
-    setVisible(false);
+    hideLoading();
   };
+
+  /**
+   * Remove item dasboard
+   * @param {*} i
+   */
   const onRemoveItem = i => {
-    console.log("removing", i);
+    props.deleteWidget(i);
   };
 
   //Create Element
@@ -72,7 +79,6 @@ const Dashboard = props => {
     <div className={classes.root}>
       <GenericModal
         title="Select widget"
-        visible={visible}
         handleOk={handleOk}
         handleCancel={handleCancel}
         width={800}
@@ -91,7 +97,10 @@ const Dashboard = props => {
 };
 const mapStateToProps = state => {
   return {
-    widgets: state.widgets
+    widgets: state.widgets.items
   };
 };
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = {
+  deleteWidget
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

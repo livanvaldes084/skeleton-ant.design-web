@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Modal } from "antd";
+import ModalContext from "context/ModalContext";
 
 const GenericModal = props => {
+  const { loadingCount } = useContext(ModalContext);
   return (
-    <Modal
-      title={props.title}
-      visible={props.visible}
-      onOk={props.handleOk}
-      onCancel={props.handleCancel}
-      width={props.width}
-    >
-      {props.body}
-    </Modal>
+    <>
+      {loadingCount > 0 && (
+        <Modal
+          title={props.title}
+          visible={loadingCount > 0 ? true : false}
+          onOk={props.handleOk}
+          onCancel={props.handleCancel}
+          width={props.width}
+        >
+          {props.body}
+        </Modal>
+      )}
+    </>
   );
 };
 GenericModal.propTypes = {

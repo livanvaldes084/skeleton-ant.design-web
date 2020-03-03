@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, Avatar } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addWidget } from "actions/widgetActions";
+import ModalContext from "context/ModalContext";
 const Widget = props => {
+  const { hideLoading } = useContext(ModalContext);
+
+  /**
+   * Select widget
+   * @param {*} e
+   */
   const handleClick = e => {
     props.addWidget(props);
+    hideLoading();
   };
   return (
     <Card title={props.name} style={{ width: 160 }} onClick={handleClick}>
