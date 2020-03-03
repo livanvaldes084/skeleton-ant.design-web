@@ -51,6 +51,4 @@ const Events = () => {
     </div>
   );
 };
-const Calendar = DragDropContext(HTML5Backend)(Events);
-
-export default Calendar;
+export default Events;
